@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StreetHunt - Hunt Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #0a0a0a, #222);
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+    input[type="url"] {
+      padding: 10px;
+      width: 80%;
+      max-width: 500px;
+      font-size: 1em;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: orange;
+      color: black;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Preview: Zanesville StreetHunt</h1>
+  <p>Clue 1: They say justice has eyes, but does she have lions too? Find the courthouse where the king of the jungle stands guard.</p>
+  <form onsubmit="return checkAnswer(event)">
+    <input type="url" id="answer" placeholder="Paste the correct Google Street View URL here" required />
+    <br />
+    <button type="submit">Submit Answer</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    function checkAnswer(event) {
+      event.preventDefault();
+      const userURL = document.getElementById("answer").value.trim();
+      const correctURL = "https://maps.app.goo.gl/Vk9Q4PwxmdbWD1wq5?g_st=ac";
+      const resultBox = document.getElementById("result");
+
+      if (userURL === correctURL) {
+        resultBox.innerHTML = "✅ Correct! Get ready for your next clue...";
+      } else {
+        resultBox.innerHTML = "❌ That’s not the right spot. Try again!";
+      }
+
+      return false;
+    }
+  </script>
+</body>
+</html>
