@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StreetHunt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to bottom right, #0077cc, #001F3F);
+      color: #fff;
+      text-align: center;
+    }
+    .container {
+      padding: 50px 20px;
+    }
+    .title {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      font-size: 1.5em;
+      margin-bottom: 30px;
+    }
+    .badge {
+      width: 120px;
+      margin: 20px auto;
+      display: block;
+    }
+    .countdown {
+      font-size: 2em;
+      margin: 20px 0;
+    }
+    .launch-button {
+      margin-top: 20px;
+      padding: 15px 25px;
+      font-size: 1.2em;
+      background-color: orange;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: none;
+    }
+    .section {
+      max-width: 800px;
+      margin: 0 auto 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">StreetHunt</div>
+    <div class="subtitle">Every city has a secret. Your job is to find it.</div>
+
+    <div class="section">
+      <p>StreetHunt is a location-based, time-limited scavenger hunt where players solve clues, explore real places, and earn exclusive digital badges and merch drops tied to their city. Each hunt is different. Each reward is rare.</p>
+      <p>Once a city opens, only the first 100 players can complete it. Then it locks. Forever.</p>
+    </div>
+
+    <div class="countdown" id="countdown">Founder's Drop opens in: <span id="timer"></span></div>
+    <button class="launch-button" id="startButton">Join the Zanesville Hunt</button>
+
+    <div class="section">
+      <h2>🏆 Founder's Edition Hunt</h2>
+      <p>Be one of the first 100 players to complete the first StreetHunt drop in Zanesville. Earn your unique badge. Get exclusive merch. Lock in lifetime bragging rights. Hints will be available for purchase (but your pride is priceless).</p>
+    </div>
+  </div>
+
+  <script>
+    const countdownDate = new Date("June 20, 2025 00:00:00").getTime();
+    const timer = document.getElementById("timer");
+    const startButton = document.getElementById("startButton");
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      if (distance <= 0) {
+        timer.innerHTML = "We're live!";
+        startButton.style.display = "inline-block";
+      } else {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        timer.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
