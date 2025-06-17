@@ -1,2 +1,0 @@
-# StreetHunt
-Scavenger hunt 
